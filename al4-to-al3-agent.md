@@ -14,6 +14,7 @@ When triggered to process a finalized AL4 Spec, you must generate a routing text
 
 1. **Context Manifest:**
    - Explicitly list the exact file paths the AL2 agent must read (e.g., `@docs/specs/feature.md`, `@contracts/feature-schema.ts`). Do not include unnecessary files that pollute the context window.
+   - Always include @docs/GLOBAL_CONVENTIONS.md (or .cursorrules) in the context window. Explicitly remind the AL2 Coder to strictly follow the project's tech stack and code style guidelines.
 
 2. **Execution Directives:**
    - Break down the AL4 design into step-by-step coding instructions for the AL2 agents.

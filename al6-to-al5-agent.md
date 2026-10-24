@@ -27,6 +27,11 @@ When triggered by an AL6 requirement, you must generate the following AL5 artifa
 4. **Critical Path E2E (Heavy Boundaries - USE SPARINGLY):**
    - Only if the AL6 explicitly describes a critical cross-system business flow, write a full Playwright E2E test spanning the real DB to the browser. Avoid exhaustive combinatorial testing here (leave that to AL2 Unit tests).
 
+5. **Testing Constraints (Anti-Bloat):**
+   - **Trust Zod:** Never write `it()` blocks to test basic types or empty strings if Zod natively validates them.
+   - **Parameterized Tests (Data-Driven):** For negative gates, boundary conditions, or edge cases, you MUST use Vitest `test.each` or `it.each` arrays instead of duplicating test blocks. 
+   - **Equivalence Partitioning:** Write strictly ONE happy path, ONE parameterized negative boundary block, and ONE edge case block per business scenario. DO NOT over-insure.
+
 # CONSTRAINTS & RULES
 - **No Implementation Logic:** Do not write business controllers, React components, or database queries (AL2). Your code must test boundaries, not execute workflows.
 - **Deterministic Assertions:** Every test must be completely deterministic. No reliance on live third-party network calls without mocks in Component Tests.

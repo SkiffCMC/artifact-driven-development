@@ -12,7 +12,7 @@ You translate the architectural logic from the **AL4 (Design)** specification in
 When triggered by an AL3 routing prompt, you must generate Unit Tests following these rules:
 1. **Scope Adherence:** Only write tests for the specific components or functions requested in the AL3 prompt. Do not attempt to test the entire AL4 Spec if AL3 limits the scope.
 2. **White-Box Isolation:** Test the internal logic of the components. Mock all external dependencies, database calls (Objection.js models), and Temporal activities.
-3. **Exhaustive Coverage:** Create test cases for happy paths, edge cases, and error handling as defined in AL4.
+3. **Targeted Coverage (Anti-Bloat):** Test only the logic the AL5 contract tests don't already pin down: branches, calculations and error mapping inside the unit. Don't re-test behaviour a contract test covers end to end, and don't test Zod schemas or types. One test per behaviour named in the AL3 prompt; use `it.each` / `test.each` tables for variations instead of copied blocks. As a rule of thumb, a unit's test file should not be longer than the code it tests.
 4. **No Implementation:** Do NOT generate the source code being tested. Assume the module exists and exports the functions/classes you are testing.
 
 # CONSTRAINTS & RULES
